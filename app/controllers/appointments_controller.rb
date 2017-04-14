@@ -5,7 +5,28 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.all
+
+    if params[:range] == 'today'
+        today = Date.today.to_s
+        @appointments = Appointment.search_by_date(today, today)
+        puts "debug +++++++++++++++++++++++++++++++++++++++++++"
+        puts today
+        puts @appointments.inspect
+        puts "debug +++++++++++++++++++++++++++++++++++++++++++"
+    elsif params[:range] == 'week'
+        day = Date.today
+        week_start = day.at_beginning_of_week.strftime
+        week_end = day.at_beginning_of_week + 7.days
+        @appointments = Appointment.search_by_date(week_start, week_end)
+        puts "debug +++++++++++++++++++++++++++++++++++++++++++"
+        puts week_start
+        puts week_end
+        puts @appointments.inspect
+        puts "debug +++++++++++++++++++++++++++++++++++++++++++"
+    else
+      @appointments = Appointment.all
+    end
+    
   end
 
   # GET /appointments/1
@@ -65,6 +86,15 @@ class AppointmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def for_today
+    redirect_to "index", range: 'today'
+  end
+
+  def for_week
+    redirect_to "index", range: 'week'
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

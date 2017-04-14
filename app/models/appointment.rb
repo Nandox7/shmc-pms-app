@@ -9,12 +9,12 @@ class Appointment < ApplicationRecord
 		self.new = true
 	end
 
-	def self.search(search_for)
+	def self.search_by_patient(search_for)
 		Appointment.where("lastname like ?", '%' + search_for + '%')
 	end
 
-	def self.search_by_date(search_for)
-		Appointment.where("date = ?", search_for)
+	def self.search_by_date(date_start, date_end)
+		Appointment.where("appointmentdate >= ? and appointmentdate <= ?", date_start, date_end)
 	end
 
 end
