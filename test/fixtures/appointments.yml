@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appointmentdate: 2017-04-14
+  appointmenttime: 2017-04-14 01:08:24
+  new: false
+  observations: MyString
+  patient: one
+  profile: one
+
+two:
+  appointmentdate: 2017-04-14
+  appointmenttime: 2017-04-14 01:08:24
+  new: false
+  observations: MyString
+  patient: two
+  profile: two

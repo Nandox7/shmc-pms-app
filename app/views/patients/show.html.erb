@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @patient.firstname %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @patient.lastname %>
+</p>
+
+<p>
+  <strong>Dateofbirth:</strong>
+  <%= @patient.dateofbirth %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @patient.address %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @patient.contact %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @patient.details %>
+</p>
+
+<p>
+  <strong>Special:</strong>
+  <%= @patient.special %>
+</p>
+
+<h1>Appointments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Appointmentdate</th>
+      <th>Appointmenttime</th>
+      <th>Patient</th>
+      <th>Profile</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @patient.appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.appointmentdate %></td>
+        <td><%= appointment.appointmenttime %></td>
+        <td><%= appointment.patient %></td>
+        <td><%= appointment.profile %></td>
+        <td><%= link_to 'Show', appointment %></td>
+        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
+        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>
