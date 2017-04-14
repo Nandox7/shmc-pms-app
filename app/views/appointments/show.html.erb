@@ -16,18 +16,13 @@
 </p>
 
 <p>
-  <strong>Observations:</strong>
-  <%= @appointment.observations %>
-</p>
-
-<p>
   <strong>Patient:</strong>
-  <%= @appointment.patient %>
+  <%= @appointment.patient.firstname %>
 </p>
 
 <p>
-  <strong>Profile:</strong>
-  <%= @appointment.profile %>
+  <strong>Doctor:</strong>
+  Dr. <%= @appointment.profile.firstname %>
 </p>
 
 <%= link_to 'Edit', edit_appointment_path(@appointment) %> |
