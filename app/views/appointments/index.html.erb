@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Appointments</h1>
 
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Appointmentdate</th>
       <th>Appointmenttime</th>
       <th>Patient</th>
-      <th>Profile</th>
+      <th>Doctor</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,11 +16,11 @@
       <tr>
         <td><%= appointment.appointmentdate %></td>
         <td><%= appointment.appointmenttime %></td>
-        <td><%= appointment.patient %></td>
-        <td><%= appointment.profile %></td>
-        <td><%= link_to 'Show', appointment, class: 'btn'  %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn' %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %></td>
+        <td><%= appointment.patient.firstname %></td>
+        <td><%= appointment.profile.firstname %></td>
+        <td><%= link_to 'View', appointment, class: 'btn btn-warning btn-xs'  %></td>
+        <td><%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Remove', appointment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  resources :appointments
   resources :profiles
-	resources :patients
+  resources :appointments do
+    resources :profiles
+    resources :patients
+  end
+	resources :patients do
+    resources :appointments
+  end
+  
+    
 
   devise_for :users
   get 'home/index'

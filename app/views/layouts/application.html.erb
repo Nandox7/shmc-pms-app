@@ -12,14 +12,12 @@
     <!-- Top Navigation Bar -->
     <%= render 'shared/navigation' %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-   
     <div id="main-container" class="container">
       <div class="row">
-        <div class="col-xs-3">
-        </div>
-        <div class="col-xs-9">
+        <%= render "shared/form_messages", flash: flash %> 
+      </div>
+      <div class="Absolute-Center is-Responsive">
+        <div class="row">
           <%= yield %>
         </div>
       </div>

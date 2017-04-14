@@ -10,6 +10,16 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     @profiles = Profile.all
+
+    if params[:search]
+      # select all patients which match the search pattern
+      @profiles = Profile.search(params[:search])
+      # sort results by first name
+      @profiles = @profiles.order("firstname DESC")
+    else
+      # order all patients by firstname
+      @profiles = @profiles.order("firstname DESC")
+    end
   end
 
   # GET /profiles/1

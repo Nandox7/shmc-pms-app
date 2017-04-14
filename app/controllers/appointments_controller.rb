@@ -24,6 +24,10 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
+    puts "debug +++++++++++++++++++++++++++++++++++++++++++"
+    puts params.inspect
+    puts "debug +++++++++++++++++++++++++++++++++++++++++++"
+  
     @appointment = Appointment.new(appointment_params)
 
     respond_to do |format|
@@ -59,9 +63,6 @@ class AppointmentsController < ApplicationController
       format.html { redirect_to appointments_url, notice: 'Appointment was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def get_all_doctors
   end
 
   private

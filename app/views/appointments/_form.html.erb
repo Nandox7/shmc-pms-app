@@ -21,14 +21,16 @@
     <%= f.time_select :appointmenttime %>
   </div>
 
+  
+
   <div class="field">
     <%= f.label :patient_id %>
-		<%= collection_select(:patient, :patient_id, Patient::all, :id, :patient_full_name ) %>
+		<%= collection_select(:patient_id, nil, Patient::all, :id, :patient_full_name ) %>
   </div>
 
   <div class="field">
     <%= f.label 'Doctor' %>
-		<%= collection_select(:profile, :profile_id, Profile::all, :id, :user_full_name ) %>
+		<%= collection_select(:profile_id, nil, Profile::all, :id, :user_full_name ) %>
   </div>
 
   <div class="field">
