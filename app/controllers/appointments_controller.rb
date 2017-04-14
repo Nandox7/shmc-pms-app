@@ -87,15 +87,6 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def for_today
-    redirect_to "index", range: 'today'
-  end
-
-  def for_week
-    redirect_to "index", range: 'week'
-  end
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment
