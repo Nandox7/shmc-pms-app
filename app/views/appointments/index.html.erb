@@ -1,4 +1,4 @@
-<h1>Appointments</h1>
+<h1>Appointments <% @appointments_range %></h1>
 
 <table class="table table-striped">
   <thead>
@@ -15,17 +15,20 @@
     <% @appointments.each do |appointment| %>
       <tr>
         <td><%= appointment.appointmentdate %></td>
-        <td><%= appointment.appointmenttime %></td>
-        <td><%= appointment.patient.firstname %></td>
-        <td><%= appointment.profile.firstname %></td>
-        <td><%= link_to 'View', appointment, class: 'btn btn-warning btn-xs'  %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn btn-warning btn-xs' %></td>
-        <td><%= link_to 'Remove', appointment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %></td>
+        <td><%= appointment.appointmenttime.strftime("%H:%M") %></td>
+        <td><%= appointment.patient.full_name %></td>
+        <td><%= appointment.profile.full_name %></td>
+        <td><%= link_to 'View', appointment, class: 'btn btn-default btn-xs'  %></td>
+        <td><%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Remove', appointment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Appointment', new_appointment_path %>
+<div class="col-sm-2 col-sm-offset-4">
+  <% if current_user.profile.is_nurse || current_user.profile.is_admin %>
+    <%= link_to 'New Appointment', new_appointment_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -1,4 +1,4 @@
-<h1>Profiles</h1>
+<h1>User Profiles</h1>
 
 <div class="container">
 	<div class="row">
@@ -7,7 +7,7 @@
             <div id="imaginary_container"> 
               <%= form_tag(profiles_path, :method => "get") do %>
                 <div class="input-group stylish-input-group">
-                      <%= text_field_tag :search, nil, :placeholder => "Search by lastname...", class: "form-control" %>
+                      <%= text_field_tag :search, nil, :placeholder => "Search by name...", class: "form-control" %>
                       <span class="input-group-addon">
                         <%= button_tag(type: 'submit', id: 'validForm') do %>
                           <span class="glyphicon glyphicon-search"></span>
@@ -39,9 +39,9 @@
         <td><%= profile.lastname %></td>
         <td><%= profile.user.email %></td>
         <td><%= profile.role %></td>
-        <td><%= link_to 'Show', profile, class: 'btn btn-warning btn-xs' %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile), class: 'btn btn-warning btn-xs' %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Show', profile, class: 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_profile_path(profile), class: 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>

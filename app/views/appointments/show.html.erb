@@ -7,23 +7,23 @@
 
 <p>
   <strong>Appointmenttime:</strong>
-  <%= @appointment.appointmenttime %>
-</p>
-
-<p>
-  <strong>New:</strong>
-  <%= @appointment.new %>
+  <%= @appointment.appointmenttime.strftime("%H:%M") %>
 </p>
 
 <p>
   <strong>Patient:</strong>
-  <%= @appointment.patient.firstname %>
+  <%= @appointment.patient.full_name %>
 </p>
 
 <p>
   <strong>Doctor:</strong>
-  Dr. <%= @appointment.profile.firstname %>
+  <%= @appointment.profile.full_name %>
 </p>
 
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+<p>
+  <strong>Observations:</strong><br/>
+  <%= text_area_tag(:message, @appointment.observations, size: "84x12",  :disabled=>true) %>
+</p>
+
+<%= link_to 'Edit', edit_appointment_path(@appointment), class: 'btn btn-default'  %>
+<%= link_to 'Back', appointments_path, class: 'btn btn-default' %>

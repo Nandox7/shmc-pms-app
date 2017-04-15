@@ -62,9 +62,8 @@
 
   <div class="actions form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit %>
-      <%= link_to 'submit', "", :onclick => "$('#form_id').submit()", class: 'btn' %>
-      <%= link_to 'Back', patients_path, class: 'btn' %>
+      <%= f.submit 'Update Details', :class => 'btn btn-success' %>
+      <%= link_to 'Back', patients_path, class: 'btn btn-default' %>
     </div>
   </div>
 <% end %>

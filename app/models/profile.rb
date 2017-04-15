@@ -10,21 +10,28 @@ class Profile < ApplicationRecord
 
 	scope :role , -> (role) { where("role like ?", "Doctor")}
 
-	def user_full_name
-		"#{firstname} #{lastname}"
+	def full_name
+		return "#{firstname} #{lastname}"
 	end
 
 	def self.search(search_for)
-		Profile.where("lastname like ?", '%' + search_for + '%')
+		Profile.where("lastname like ? or firstname like ?", '%' + search_for + '%', '%' + search_for + '%')
 	end
 
 	def is_admin
 		return self.role == "Admin"
 	end
   
+  	def is_doctor
+		return self.role == "Doctor"
+	end
+
+	def is_nurse
+		return self.role == "Nurse"
+	end
+
 	def all_doctors
 		profiles = Profile.where(role: 'Doctor').order(lastname: :desc)
 	end
-	
 
 end

@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
 	before_filter :authenticate_user!
+
+
   # Get all current users
   @users = User.all
 	
@@ -51,6 +53,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
 
+    @profile.firstname = params[:profile][:firstname]
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
@@ -99,9 +102,6 @@ class ProfilesController < ApplicationController
       #redirect_to "/profiles/#{@profile.id}"
 			redirect_to "/home/index"
     end
-  end
-
-  def get_all_doctors
   end
 
   private
