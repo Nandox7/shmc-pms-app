@@ -4,3 +4,13 @@
     <p class="lead">Welcome to SHC-PMS Application</p>
   </div>
 </div>
+
+<%= week_calendar events: @appointments do |appointmentdate, appointments| %>
+  <%= appointmentdate %>
+
+  <% appointments.each do |appointment| %>
+    <div>
+      <%= link_to  appointment.patient.full_name, appointment, class: 'btn btn-xs'  %>
+    </div>
+  <% end %>
+<% end %>

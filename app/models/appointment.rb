@@ -17,4 +17,9 @@ class Appointment < ApplicationRecord
 		Appointment.where("appointmentdate >= ? and appointmentdate <= ?", date_start, date_end)
 	end
 
+	# Required for the calendar widget
+	def start_time
+        self.appointmentdate
+    end
+
 end
