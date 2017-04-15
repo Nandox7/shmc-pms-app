@@ -41,10 +41,10 @@
 
   <% if current_user.profile.is_doctor || current_user.profile.is_admin %>
     <% if @appointment.persisted? %>
-    <div class="field  form-group">
+    <div class="field form-group">
       <%= f.label 'Observations', class: 'col-sm-2 control-label'  %>
       <div class="col-sm-10">
-        <%= text_area_tag(:observations, @appointment.observations, size: "84x12")  %>
+        <%= f.text_area :observations, :id => "message_area", :cols => 84, :rows => 12, class: 'form-group' %>
       </div>
     </div>
     <% end %>
