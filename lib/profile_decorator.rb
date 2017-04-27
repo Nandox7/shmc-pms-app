@@ -1,32 +1,32 @@
 class BasicProfile
-    def initialize(c, m, color)
-        @cost = c
-        @model = m
-        @color = color
-        @description = "basic car"
+    def initialize(vpat, vprof, vappoint)
+        @vPatients = vpat
+        @vProfiles = vprof
+        @vAppointments = vappoint
+        @description = "Basic Profile"
     end
     
     # getter method
-    def cost 
-        return @cost
+    def viewpatients 
+        return @vPatients
     end
     
-    # a method which returns a string representation of the object of type BasicCar
+    # a method which returns a string representation of the object
     def details
-        return @description + "; " + @model + "; " + @color + ": " + "#{@cost}"
+        return @description + "; " + @vPatients + "; " + @vProfiles + ": " + @vAppointments
     end
     
     # getter method
-    def color
-        return @color
+    def viewprofiles
+        return @vProfiles
     end
     
     # getter method
-    def model 
-        return @model
+    def vuewappointments 
+        return @vAppointments
     end
     
-end # ends the BasicCar class
+end 
 
 
 
@@ -34,56 +34,53 @@ end # ends the BasicCar class
 # the base/super class decorator (i.e. no actual decoration yet), each concrete decorator (i.e. subclass) will add its own decoration
 class ProfileDecorator < BasicProfile
     def initialize(basic_profile)
-        #basic_car is a real car, i.e. the component we want to decorate
-        @basic_car = basic_car
-        super(@basic_car.cost, @basic_car.model, @basic_car.color)
-        @extra_cost = 0
-        @description = "no extra feature"
-    end
-    
-    # override the cost method to include the cost of the extra feature	
-    def cost        
-        return @extra_cost + @basic_car.cost
+        @basic_profile = basic_profile
+        super(@basic_profile.vPatients, @basic_profile.vProfiles, @basic_profile.vAppointments)
+        @description = "no permissions"
     end
     
     # override the details method to include the description of the extra feature
     def details
-        return  @description + ": " + "#{@extra_cost}" + ". " + @basic_car.details
+        return  @description + ": " + ". " + @basic_profile.details
     end
     
-end # ends the CarDecorator class
+end 
 
 
-# a concrete decorator --  define an extra feature
-class MirrorDecorator < CarDecorator
-    def initialize(basic_car)
-        super(basic_car)
-        @extra_cost = 200
-        @description = "anti glare rear view mirror"
+
+class AdminDecorator < ProfileDecorator
+    def initialize(basic_profile)
+        super(basic_profile)
+        @vProfiles = true
+        @vPatients = true
+        @vAppointments = true
+        @description = "Admin Profile"
     end
     
-end # ends the MirrorDecorator class
+end 
 
 
-# another concrete decorator -- define an extra feature
-class ElectricWindowsDecorator < CarDecorator
-    def initialize(basic_car)
-        super(basic_car)
-        @extra_cost = 500
-        @description = "electric windows"
+class DoctorWindowsDecorator < ProfileDecorator
+    def initialize(basic_profile)
+        super(basic_profile)
+        @vProfiles = false
+        @vPatients = true
+        @vAppointments = true
+        @description = "Doctor Profile"
     end
     
-end # ends the ElectricWindowsDecorator class
+end 
 
 
-# another concrete decorator -- define an extra feature
-class ParkingSensorDecorator < CarDecorator
-    def initialize(basic_car)
-        super(basic_car)
-        @extra_cost = 800
-        @description = "parking sensor"
+class NurseDecorator < ProfileDecorator
+    def initialize(basic_profile)
+        super(basic_profile)
+        @vPatients = false
+        @vProfiles = false
+        @vAppointments = true
+        @description = "Nurse Profile"
     end
     
-end # ends the ParkingSensorDecorator class
+end
 
 

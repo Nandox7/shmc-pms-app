@@ -40,18 +40,21 @@
 		</div>
   </div>
 
-<div class="actions"> Role: 
+<div class="actions"> Role Permissions Details: 
 
-<div class="field"> Electric windows: 
-<%= check_box_tag 'car[windows]', 'windows' %> 
+<div class="field form-group">
+  <%= f.label 'View Patients:', class: 'col-sm-3 control-label' %> 
+  <%= check_box_tag 'profile[vPatients]', 'vPatients', class: 'form-control' %> 
 </div> 
 
-<div class="field"> Anti glare rear view mirror: 
-<%= check_box_tag 'car[mirror]', 'mirror' %> 
+<div class="field form-group"> 
+  <%= f.label 'View Profiles:', class: 'col-sm-3 control-label' %> 
+  <%= check_box_tag 'profile[vProfiles]', 'vProfiles', class: 'form-control' %> 
 </div> 
 
-<div class="field"> Parking sensor: 
-<%= check_box_tag 'car[psensor]', 'psensor' %> 
+<div class="field form-group">
+  <%= f.label 'View Appointments:', class: 'col-sm-3 control-label' %> 
+  <%= check_box_tag 'profile[vAppointments]', 'vAppointments', class: 'form-control' %> 
 </div> 
 
   <div class="actions form-group">
